@@ -1,5 +1,7 @@
+use JediLibraryDB;
+
 insert into Planets
-Values
+values
 ('Abafar','Sprizen sector'), 
 ('Aeneid','Kessel sector'), 
 ('Alderaan','Alderaan sector'), 
@@ -76,7 +78,7 @@ Values
 ('Kirtarkin','Anoat sector'), 
 ('Klatooine','Hutt Space'), 
 ('Krownest','Mandalore sector'), 
-('Lah'mu','Raioballo sector'), 
+('Lah''mu','Raioballo sector'), 
 ('Lefrani','Atravis sector'), 
 ('Lola Sayu','Belderone sector'), 
 ('Lothal','Lothal sector'), 
@@ -102,7 +104,7 @@ Values
 ('Nal Hutta','Hutt Space'), 
 ('Neral','Corellian sector'), 
 ('Nothoiin','Anoat sector'), 
-('N'Zoth','Koornacht Cluster'), 
+('N''Zoth','Koornacht Cluster'), 
 ('Oba Diah','Kessel sector'), 
 ('Onderon','Japrael sector'), 
 ('Oon','Lothal sector'), 
@@ -151,7 +153,7 @@ Values
 ('Utapau','Tarabba sector'), 
 ('Vandor','Sloo sector'), 
 ('Vetine','Merrick sector'), 
-('Vodran','Si'Klaata Cluster'), 
+('Vodran','Si''Klaata Cluster'), 
 ('Wobani','Bryx sector'), 
 ('Yavin','Gordian Reach'), 
 ('Zerm','Kessel sector'), 

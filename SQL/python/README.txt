@@ -1,0 +1,1 @@
+Pliki pythonowe do generowania insertów do tabel ³¹cz¹cych misje z rycerzami i z planetami
