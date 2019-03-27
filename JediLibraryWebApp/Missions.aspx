@@ -8,4 +8,6 @@
 
     <asp:Table ID="Table1" runat="server" BorderStyle="Double" GridLines="Both" Width="500px" CellPadding="5" CellSpacing="5">
     </asp:Table>
+
+    <div runat="server" ID="errors"></div>
 </asp:Content>

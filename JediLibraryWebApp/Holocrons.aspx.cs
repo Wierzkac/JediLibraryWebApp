@@ -14,7 +14,7 @@ namespace JediLibraryWebApp
         protected void Page_Load(object sender, EventArgs e)
         {
             SqlConnection connectionSQL;
-            string query = "select * from Holocrons where ClassID >" + Session["ID"] + ";";
+            string query = "select * from Holocrons where ClassID >=" + Session["ID"] + ";";
             connectionSQL = (SqlConnection)Session["Connection"];
             SqlCommand command = new SqlCommand(query, connectionSQL);
             SqlDataReader reader = null;
@@ -26,11 +26,19 @@ namespace JediLibraryWebApp
                 while (reader.Read())
                 {
                     TableRow r = new TableRow();
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 1; i < 3; i++)
                     {
                         TableCell c = new TableCell();
                         c.Text = reader[i].ToString();
+
+                        HyperLink link = new HyperLink();
+                        link.NavigateUrl = "~/SelectedItem.aspx?name=Holocrons&id=" + reader[0];
+                        link.Text = c.Text;
+                        c.Controls.Add(link);
+
                         r.Cells.Add(c);
+
+                        r.Controls.Add(c);
                     }
                     Table1.Rows.Add(r);
                     j++;

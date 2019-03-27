@@ -39,9 +39,9 @@ namespace JediLibraryWebApp
             string login = TextBox1.Text;
             string password = TextBox2.Text;
             string nameOfPermission = "Select Name from JediLibraryDB.dbo.Permissions" +
-                                 " Where PermId = (Select ClassID From Users" +
+                                 " Where Id = (Select ID From Users" +
                                                     " Where Username='" + login + "' and HashedPassword='" + password + "');";
-            string IDOfPermission = "Select ClassID From Users Where Username='" + login + "' and HashedPassword='" + password + "';";
+            string IDOfPermission = "Select ID From Users Where Username='" + login + "' and HashedPassword='" + password + "';";
 
             try
             {
