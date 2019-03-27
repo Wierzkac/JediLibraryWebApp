@@ -29,7 +29,7 @@ namespace JediLibraryWebApp
             {
                 DeleteButton.Visible = true;
             }
-            else if (Convert.ToInt32(id_uprawnien) < 3)
+            if (Convert.ToInt32(id_uprawnien) < 3)
             {
                 EditButton.Visible = true;
             }
@@ -93,7 +93,7 @@ namespace JediLibraryWebApp
                     wlaczonaEdycja.Controls.Add(text);
                     var tmp = new TextBox();
                     tmp.Text = reader[1].ToString();
-                    tmp.ID = "Title";
+                    tmp.ID = "TitleBox";
                     wlaczonaEdycja.Controls.Add(tmp);
                     var enter = new HtmlGenericControl("br");
                     wlaczonaEdycja.Controls.Add(enter);
@@ -103,7 +103,7 @@ namespace JediLibraryWebApp
                     wlaczonaEdycja.Controls.Add(text);
                     tmp = new TextBox();
                     tmp.Text = reader[2].ToString();
-                    tmp.ID = "Year";
+                    tmp.ID = "YearBox";
                     wlaczonaEdycja.Controls.Add(tmp);
                     enter = new HtmlGenericControl("br");
                     wlaczonaEdycja.Controls.Add(enter);
@@ -112,7 +112,7 @@ namespace JediLibraryWebApp
                     text.InnerHtml = "Author: ";
                     wlaczonaEdycja.Controls.Add(text);
                     tmp = new TextBox();
-                    tmp.ID = "Author";
+                    tmp.ID = "AuthorBox";
                     tmp.Text = reader[4].ToString();
                     wlaczonaEdycja.Controls.Add(tmp);
                     enter = new HtmlGenericControl("br");
@@ -123,11 +123,12 @@ namespace JediLibraryWebApp
                     text.InnerHtml = "Content: ";
                     wlaczonaEdycja.Controls.Add(text);
                     var tmp2 = new HtmlGenericControl("textarea");
-                    tmp2.InnerHtml = reader[3].ToString();
+                    tmp2.InnerText = reader[3].ToString();
                     tmp2.Attributes["rows"] = "10";
                     tmp2.Attributes["cols"] = "1000";
+                    tmp2.ID = "ContentBox";
+                    tmp2.Attributes["runat"] = "serwer";
                     wlaczonaEdycja.Controls.Add(tmp2);
-                    tmp2.ID = "Content";
                     enter = new HtmlGenericControl("br");
                     wlaczonaEdycja.Controls.Add(enter);
 
@@ -136,7 +137,7 @@ namespace JediLibraryWebApp
                     wlaczonaEdycja.Controls.Add(text);
                     tmp = new TextBox();
                     tmp.Text = reader[5].ToString();
-                    tmp.ID = "PoziomDostepu";
+                    tmp.ID = "PoziomDostepuBox";
                     wlaczonaEdycja.Controls.Add(tmp);
                     enter = new HtmlGenericControl("br");
                     wlaczonaEdycja.Controls.Add(enter);
@@ -193,7 +194,13 @@ namespace JediLibraryWebApp
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
-            string query = "update " + nameTable + " set Title = 'Zmiana', YearOfPublish = 'Zmiana', Content = 'Zmiana', Author = 'Zmiana', ClassID = '2'" +" where ID=" + id + ";";
+            string query = "update " + nameTable + 
+                " set Title = '"+((TextBox)wlaczonaEdycja.FindControl("TitleBox")).Text +
+                "', YearOfPublish = '"+((TextBox)wlaczonaEdycja.FindControl("YearBox")).Text +
+                "', Content = '" + ((HtmlGenericControl)wlaczonaEdycja.FindControl("ContentBox")).InnerText + 
+                "', Author = '" + ((TextBox)wlaczonaEdycja.FindControl("AuthorBox")).Text + 
+                "', ClassID = '" + ((TextBox)wlaczonaEdycja.FindControl("PoziomDostepuBox")).Text + 
+                "' where ID=" + id + ";";
 
             SqlCommand command = new SqlCommand(query, connectionSQL);
             try

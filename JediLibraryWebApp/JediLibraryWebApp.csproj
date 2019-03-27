@@ -111,6 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddNewHolocron.aspx" />
     <Content Include="Holocrons.aspx" />
     <Content Include="Missions.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -167,6 +168,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewHolocron.aspx.cs">
+      <DependentUpon>AddNewHolocron.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewHolocron.aspx.designer.cs">
+      <DependentUpon>AddNewHolocron.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Holocrons.aspx.cs">
       <DependentUpon>Holocrons.aspx</DependentUpon>

@@ -31,12 +31,13 @@ namespace JediLibraryWebApp
                 MyDiv.Visible = false;
                 LogOutLabel.Visible = true;
             }
-
+            connectionSQL.Close();
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            connectionSQL.Open();
             string login = TextBox1.Text;
             string password = TextBox2.Text;
             string nameOfPermission = "Select Name from JediLibraryDB.dbo.Permissions" +

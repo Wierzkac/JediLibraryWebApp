@@ -20,6 +20,10 @@ namespace JediLibraryWebApp
             SqlDataReader reader = null;
             try
             {
+                if (Convert.ToInt32(Session["ID"].ToString()) < 4)
+                {
+                    AddButton.Visible = true;
+                }
                 connectionSQL.Open();
                 reader = command.ExecuteReader();
                 int j = 0;
@@ -50,6 +54,11 @@ namespace JediLibraryWebApp
             {
 
             }
+        }
+
+        protected void AddButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AddNewHolocron.aspx");
         }
     }
 }
