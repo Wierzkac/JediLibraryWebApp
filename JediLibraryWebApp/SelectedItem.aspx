@@ -6,12 +6,12 @@
 
     </div>
     <div runat="server" id="edycja">
-        <asp:Button ID="Button1" runat="server" Text="Submit" />
-        <asp:Button ID="Button2" runat="server" Text="Cancel" />
+        <asp:Button ID="SubmitButton" runat="server" Text="Submit" OnClick="SubmitButton_Click" />
+        <asp:Button ID="CancelButton" runat="server" Text="Cancel" OnClick="Button2_Click" />
     </div>
     <div runat="server" id="widok">
-        <asp:Button ID="Button3" runat="server" Text="Edit" OnClick="Button3_Click" />
-        <asp:Button ID="Button4" runat="server" Text="Delete" />
+        <asp:Button ID="EditButton" runat="server" Text="Edit" Visible="false" OnClick="Button3_Click" />
+        <asp:Button ID="DeleteButton" runat="server" Text="Delete" Visible="False" OnClick="DeleteButton_Click" />
     </div>
     <div runat="server" ID="errors"></div>
 </asp:Content>

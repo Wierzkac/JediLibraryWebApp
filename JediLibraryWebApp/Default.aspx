@@ -8,6 +8,8 @@
                 &nbsp;</p>
             <p>
             <asp:Label ID="Label3" runat="server" Text="Gratuluje, zostały Ci przyznane prawa dostępu :" Visible="False" Width="700px"></asp:Label>
+            <br />
+            <asp:Button ID="LogOutLabel" runat="server" Text="Wyloguj się!" Visible="False" Onclick="LogOut_click" ForeColor="#0066FF"></asp:Button>
 
             </p>
             <div runat="server" ID="MyDiv">

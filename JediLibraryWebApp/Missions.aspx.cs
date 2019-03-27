@@ -40,9 +40,7 @@ namespace JediLibraryWebApp
 
                         r.Controls.Add(c);
                     }
-
                     Table1.Rows.Add(r);
-                    Table1.Controls.Add(r);
                     j++;
                 }
                 reader.Close();

@@ -40,22 +40,22 @@ namespace JediLibraryWebApp {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl edycja;
         
         /// <summary>
-        /// Button1 control.
+        /// SubmitButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button SubmitButton;
         
         /// <summary>
-        /// Button2 control.
+        /// CancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button CancelButton;
         
         /// <summary>
         /// widok control.
@@ -67,22 +67,22 @@ namespace JediLibraryWebApp {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl widok;
         
         /// <summary>
-        /// Button3 control.
+        /// EditButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button EditButton;
         
         /// <summary>
-        /// Button4 control.
+        /// DeleteButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button DeleteButton;
         
         /// <summary>
         /// errors control.

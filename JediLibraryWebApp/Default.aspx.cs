@@ -29,6 +29,7 @@ namespace JediLibraryWebApp
                 Label3.Text += Session["Name"];
                 Label3.Visible = true;
                 MyDiv.Visible = false;
+                LogOutLabel.Visible = true;
             }
 
 
@@ -39,9 +40,9 @@ namespace JediLibraryWebApp
             string login = TextBox1.Text;
             string password = TextBox2.Text;
             string nameOfPermission = "Select Name from JediLibraryDB.dbo.Permissions" +
-                                 " Where Id = (Select ID From Users" +
+                                 " Where Id = (Select ClassID From Users" +
                                                     " Where Username='" + login + "' and HashedPassword='" + password + "');";
-            string IDOfPermission = "Select ID From Users Where Username='" + login + "' and HashedPassword='" + password + "';";
+            string IDOfPermission = "Select ClassID From Users Where Username='" + login + "' and HashedPassword='" + password + "';";
 
             try
             {
@@ -52,6 +53,7 @@ namespace JediLibraryWebApp
                 Session["Name"] = reader[0];
                 Label3.Visible = true;
                 MyDiv.Visible = false;
+                LogOutLabel.Visible = true;
 
                 reader.Close();
 
@@ -67,6 +69,16 @@ namespace JediLibraryWebApp
                 Label2.Text = "Cannot open connection! "+ex.Message;
             }
 
+
+        }
+        protected void LogOut_click(object sender, EventArgs e)
+        {
+            Session["Name"] = null;
+            Session["ID"] = null ;
+            Label3.Visible = false;
+            MyDiv.Visible = true;
+            LogOutLabel.Visible = false;
+            Response.Redirect(Request.RawUrl);
 
         }
     }
