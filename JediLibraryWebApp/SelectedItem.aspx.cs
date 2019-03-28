@@ -70,6 +70,8 @@ namespace JediLibraryWebApp
                     MyDiv.Controls.Add(year);
                     MyDiv.Controls.Add(planets);
                     MyDiv.Controls.Add(knights);
+                    wlaczonaEdycja.Visible = false;
+                    widok.Visible = false;
 
                 }
                 else if (nameTable == "Holocrons")
@@ -122,13 +124,10 @@ namespace JediLibraryWebApp
                     text = new HtmlGenericControl("p");
                     text.InnerHtml = "Content: ";
                     wlaczonaEdycja.Controls.Add(text);
-                    var tmp2 = new HtmlGenericControl("textarea");
-                    tmp2.InnerText = reader[3].ToString();
-                    tmp2.Attributes["rows"] = "10";
-                    tmp2.Attributes["cols"] = "1000";
-                    tmp2.ID = "ContentBox";
-                    tmp2.Attributes["runat"] = "serwer";
-                    wlaczonaEdycja.Controls.Add(tmp2);
+                    tmp = new TextBox();
+                    tmp.ID = "ContentBox";
+                    tmp.Text = reader[3].ToString();
+                    wlaczonaEdycja.Controls.Add(tmp);
                     enter = new HtmlGenericControl("br");
                     wlaczonaEdycja.Controls.Add(enter);
 
@@ -194,10 +193,11 @@ namespace JediLibraryWebApp
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
+
             string query = "update " + nameTable + 
                 " set Title = '"+((TextBox)wlaczonaEdycja.FindControl("TitleBox")).Text +
                 "', YearOfPublish = '"+((TextBox)wlaczonaEdycja.FindControl("YearBox")).Text +
-                "', Content = '" + ((HtmlGenericControl)wlaczonaEdycja.FindControl("ContentBox")).InnerText + 
+                "', Content = '" + ((TextBox)wlaczonaEdycja.FindControl("ContentBox")).Text + 
                 "', Author = '" + ((TextBox)wlaczonaEdycja.FindControl("AuthorBox")).Text + 
                 "', ClassID = '" + ((TextBox)wlaczonaEdycja.FindControl("PoziomDostepuBox")).Text + 
                 "' where ID=" + id + ";";
@@ -210,9 +210,6 @@ namespace JediLibraryWebApp
                 connectionSQL.Close();
 
                 Response.Redirect("~/" + nameTable);
-
-
-
             }
             catch (Exception ar)
             {
