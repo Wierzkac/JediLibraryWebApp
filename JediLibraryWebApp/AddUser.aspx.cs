@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace JediLibraryWebApp
 {
-    public partial class AddNewHolocron : System.Web.UI.Page
+    public partial class AddUser : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,7 +17,7 @@ namespace JediLibraryWebApp
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Holocrons");
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void AddButton_Click(object sender, EventArgs e)
@@ -25,17 +25,9 @@ namespace JediLibraryWebApp
             SqlConnection connectionSQL = (SqlConnection)Session["Connection"];
 
 
-            if (TytulBox.Text.Contains("'")) TytulBox.Text = TytulBox.Text.Replace("'", "''");
-            if (YearBox.Text.Contains("'")) YearBox.Text = YearBox.Text.Replace("'", "''");
-            if (ContentBox.Text.Contains("'")) ContentBox.Text = ContentBox.Text.Replace("'", "''");
-            if (PozwolenieBox.Text.Contains("'")) PozwolenieBox.Text = PozwolenieBox.Text.Replace("'", "''");
-
-
-            string query = "insert into Holocrons values ( '"+ TytulBox.Text +
-                "', '" + YearBox.Text +
-                "', '" + ContentBox.Text +
-                "', '" + AuthorBox.Text +
-                "', " + PozwolenieBox.Text +
+            string query = "insert into Users values ( '" + UsernameBox.Text +
+                "', '" + PasswordBox.Text +
+                "', '" + PermissionsBox.Text +
                 ");";
 
             SqlCommand command = new SqlCommand(query, connectionSQL);
@@ -44,7 +36,7 @@ namespace JediLibraryWebApp
                 connectionSQL.Open();
                 command.ExecuteReader();
                 connectionSQL.Close();
-                Response.Redirect("~/Holocrons");
+                Response.Redirect("~/Default.aspx");
             }
             catch (Exception ar)
             {

@@ -15,9 +15,9 @@ namespace JediLibraryWebApp
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //connetionString = "Data Source=tcp:LENOVOY50,33306; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik13";
+            connetionString = "Data Source=tcp:LENOVOY50,33306; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik13";
             //string nameOfPermission ="insert into Users values ('Kacper', 'kacper', 1);";
-            connetionString = "Data Source=localhost; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik12";
+            //connetionString = "Data Source=localhost; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik12";
             connectionSQL = new SqlConnection(connetionString);
             Session["Connection"] = connectionSQL;
             connectionSQL.Open();
@@ -37,9 +37,17 @@ namespace JediLibraryWebApp
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+
             connectionSQL.Open();
             string login = TextBox1.Text;
             string password = TextBox2.Text;
+
+            //przełączenie na admina
+            if(login == "login" && password == "password")
+                Response.Redirect("~/AddUser.aspx");
+
+
             string nameOfPermission = "Select Name from JediLibraryDB.dbo.Permissions" +
                                  " Where Id = (Select ClassID From Users" +
                                                     " Where Username='" + login + "' and HashedPassword='" + password + "');";

@@ -10,52 +10,43 @@
 namespace JediLibraryWebApp {
     
     
-    public partial class _Default {
+    public partial class AddUser {
         
         /// <summary>
-        /// LogOutLabel control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogOutLabel;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// MyDiv control.
+        /// UsernameBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MyDiv;
+        protected global::System.Web.UI.WebControls.TextBox UsernameBox;
         
         /// <summary>
-        /// TextBox1 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// TextBox2 control.
+        /// PasswordBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox PasswordBox;
         
         /// <summary>
         /// Label3 control.
@@ -67,12 +58,30 @@ namespace JediLibraryWebApp {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Label2 control.
+        /// PermissionsBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox PermissionsBox;
+        
+        /// <summary>
+        /// AddButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddButton;
+        
+        /// <summary>
+        /// CancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelButton;
     }
 }

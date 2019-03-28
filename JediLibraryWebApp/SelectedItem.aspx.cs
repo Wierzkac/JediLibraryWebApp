@@ -194,11 +194,25 @@ namespace JediLibraryWebApp
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
 
+            string title = ((TextBox)wlaczonaEdycja.FindControl("TitleBox")).Text;
+            string year = ((TextBox)wlaczonaEdycja.FindControl("YearBox")).Text;
+            string content = ((TextBox)wlaczonaEdycja.FindControl("ContentBox")).Text;
+            string author = ((TextBox)wlaczonaEdycja.FindControl("AuthorBox")).Text;
+
+           
+            if (title.Contains("'")) title = title.Replace("'", "''");
+            if (year.Contains("'")) year = year.Replace("'", "''");
+            if (content.Contains("'")) content = content.Replace("'", "''");
+            if (author.Contains("'")) author = author.Replace("'", "''");
+
+
+
+
             string query = "update " + nameTable + 
-                " set Title = '"+((TextBox)wlaczonaEdycja.FindControl("TitleBox")).Text +
-                "', YearOfPublish = '"+((TextBox)wlaczonaEdycja.FindControl("YearBox")).Text +
-                "', Content = '" + ((TextBox)wlaczonaEdycja.FindControl("ContentBox")).Text + 
-                "', Author = '" + ((TextBox)wlaczonaEdycja.FindControl("AuthorBox")).Text + 
+                " set Title = '"+ title +
+                "', YearOfPublish = '"+ year +
+                "', Content = '" + content + 
+                "', Author = '" + author + 
                 "', ClassID = '" + ((TextBox)wlaczonaEdycja.FindControl("PoziomDostepuBox")).Text + 
                 "' where ID=" + id + ";";
 
@@ -213,6 +227,7 @@ namespace JediLibraryWebApp
             }
             catch (Exception ar)
             {
+                connectionSQL.Close();
                 errors.InnerText = ar.Message;
             }
         }
