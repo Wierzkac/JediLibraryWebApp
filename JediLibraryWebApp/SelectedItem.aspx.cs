@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Web.UI.HtmlControls;
+using System.Text;
 
 namespace JediLibraryWebApp
 {
@@ -126,6 +127,9 @@ namespace JediLibraryWebApp
                     wlaczonaEdycja.Controls.Add(text);
                     tmp = new TextBox();
                     tmp.ID = "ContentBox";
+                    tmp.TextMode = TextBoxMode.MultiLine;
+                    tmp.Style.Add("min-width", "100%");
+                    tmp.Style.Add("height", "200px");
                     tmp.Text = reader[3].ToString();
                     wlaczonaEdycja.Controls.Add(tmp);
                     enter = new HtmlGenericControl("br");
@@ -181,9 +185,6 @@ namespace JediLibraryWebApp
                 connectionSQL.Close();
 
                 Response.Redirect("~/"+nameTable);
-
-
-
             }
             catch (Exception ar)
             {

@@ -18,7 +18,7 @@
             </p>
             <p>
                 Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox2" runat="server" CssClass="textbox">password</asp:TextBox>
+                <asp:TextBox ID="TextBox2" runat="server" CssClass="textbox" TextMode="Password">password</asp:TextBox>
             </p>
             <p>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

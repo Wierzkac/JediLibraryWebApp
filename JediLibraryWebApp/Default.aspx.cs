@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Security.Cryptography;
 using System.Data.SqlClient;
 
 namespace JediLibraryWebApp
@@ -15,9 +12,9 @@ namespace JediLibraryWebApp
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            connetionString = "Data Source=tcp:LENOVOY50,33306; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik13";
+            //connetionString = "Data Source=tcp:LENOVOY50,33306; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik13";
             //string nameOfPermission ="insert into Users values ('Kacper', 'kacper', 1);";
-            //connetionString = "Data Source=localhost; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik12";
+            connetionString = "Data Source=localhost; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik12";
             connectionSQL = new SqlConnection(connetionString);
             Session["Connection"] = connectionSQL;
             connectionSQL.Open();
@@ -37,24 +34,43 @@ namespace JediLibraryWebApp
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-
-            connectionSQL.Open();
             string login = TextBox1.Text;
             string password = TextBox2.Text;
 
             //przełączenie na admina
-            if(login == "login" && password == "password")
+            if(login == "admin" && password == "admin")
                 Response.Redirect("~/AddUser.aspx");
 
+            try
+            {
+                string passwordFromBase = "Select HashedPassword From Users" +
+                                                       " Where Username='" + login + "';";
+                connectionSQL.Open();
+                SqlCommand command = new SqlCommand(passwordFromBase, connectionSQL);
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                string hashedPassword = reader[0].ToString();
+                reader.Close();
+                connectionSQL.Close();
+                if(!SecurePasswordHasher.Verify(password, hashedPassword)){
+                    throw new Exception();
+                }
+                password = hashedPassword;
+            }
+            catch (Exception ex)
+            {
+                Label2.Text = "Wrong login or password!";
+                return;
+            }
 
             string nameOfPermission = "Select Name from JediLibraryDB.dbo.Permissions" +
                                  " Where Id = (Select ClassID From Users" +
                                                     " Where Username='" + login + "' and HashedPassword='" + password + "');";
             string IDOfPermission = "Select ClassID From Users Where Username='" + login + "' and HashedPassword='" + password + "';";
-
+            
             try
             {
+                connectionSQL.Open();
                 SqlCommand command = new SqlCommand(nameOfPermission, connectionSQL);
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();

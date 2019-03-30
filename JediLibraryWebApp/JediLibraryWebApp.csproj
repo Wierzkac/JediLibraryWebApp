@@ -184,6 +184,7 @@
       <DependentUpon>AddUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="SecurePasswordHasher.cs" />
     <Compile Include="Holocrons.aspx.cs">
       <DependentUpon>Holocrons.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

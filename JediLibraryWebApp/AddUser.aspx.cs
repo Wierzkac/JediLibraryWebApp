@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace JediLibraryWebApp
 {
@@ -24,15 +20,36 @@ namespace JediLibraryWebApp
         {
             SqlConnection connectionSQL = (SqlConnection)Session["Connection"];
 
+            string login = UsernameBox.Text;
+            string password = SecurePasswordHasher.Hash(PasswordBox.Text);
 
-            string query = "insert into Users values ( '" + UsernameBox.Text +
-                "', '" + PasswordBox.Text +
-                "', '" + PermissionsBox.Text +
-                ");";
-
-            SqlCommand command = new SqlCommand(query, connectionSQL);
             try
             {
+                string query = "Select ID From Users Where Username='" + login + "';";
+
+                SqlCommand command = new SqlCommand(query, connectionSQL);
+                connectionSQL.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                var tmp = reader[0];
+                reader.Close();
+                connectionSQL.Close();
+                LogLabel.Text = "User with that name already exists. Please choose another name!";
+                return;
+            }
+            catch (Exception ar)
+            {
+                connectionSQL.Close();
+            }
+
+
+            try
+            {
+                string query = "insert into Users values ( '" + login +
+                    "', '" + password +
+                    "', '" + PermissionsBox.Text +
+                    "');";
+                SqlCommand command = new SqlCommand(query, connectionSQL);
                 connectionSQL.Open();
                 command.ExecuteReader();
                 connectionSQL.Close();

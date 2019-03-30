@@ -16,4 +16,7 @@
         <asp:Button ID="AddButton" runat="server" Text="Submit" OnClick="AddButton_Click" />
         <asp:Button ID="CancelButton" runat="server" Text="Cancel" OnClick="CancelButton_Click" />
     </div>
+    <div>
+        <asp:Label ID="LogLabel" runat="server" Text=" "></asp:Label>
+    </div>
 </asp:Content>
