@@ -12,9 +12,9 @@ namespace JediLibraryWebApp
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //connetionString = "Data Source=tcp:LENOVOY50,33306; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik13";
+            connetionString = "Data Source=tcp:LENOVOY50,33306; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik13";
             //string nameOfPermission ="insert into Users values ('Kacper', 'kacper', 1);";
-            connetionString = "Data Source=localhost; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik12";
+            //connetionString = "Data Source=localhost; Initial Catalog=JediLibraryDB;User ID=Yoda;Password=Plagiacik12";
             connectionSQL = new SqlConnection(connetionString);
             Session["Connection"] = connectionSQL;
             connectionSQL.Open();

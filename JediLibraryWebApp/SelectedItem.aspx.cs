@@ -19,6 +19,9 @@ namespace JediLibraryWebApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["ID"] == null)
+                Response.Redirect("~/");
             edycja.Visible = false;
             wlaczonaEdycja.Visible = false;
             connectionSQL = (SqlConnection)Session["Connection"];
@@ -128,6 +131,7 @@ namespace JediLibraryWebApp
                     tmp = new TextBox();
                     tmp.ID = "ContentBox";
                     tmp.TextMode = TextBoxMode.MultiLine;
+                    tmp.Attributes["class"] = "textbox";
                     tmp.Style.Add("min-width", "100%");
                     tmp.Style.Add("height", "200px");
                     tmp.Text = reader[3].ToString();

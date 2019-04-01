@@ -8,11 +8,12 @@ using System.Data.SqlClient;
 
 namespace JediLibraryWebApp
 {
-    public partial class AddNewHolocron : System.Web.UI.Page
+    public partial class AddNewHolocron : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["ID"] == null)
+                Response.Redirect("~/");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)

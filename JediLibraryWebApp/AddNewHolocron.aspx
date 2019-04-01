@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="div">
         <br />
-        <asp:Label ID="Label1" runat="server" Text="Tytul: "></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Title: "></asp:Label>
         <asp:TextBox ID="TytulBox" runat="server" CssClass="textbox"></asp:TextBox>
         <br />
         <asp:Label ID="Label2" runat="server" Text="Author: "></asp:Label>
@@ -12,7 +12,7 @@
         <asp:TextBox ID="YearBox" runat="server" CssClass="textbox"></asp:TextBox>
         <br />
         <asp:Label ID="Label4" runat="server" Text="Content: "></asp:Label>
-        <asp:TextBox ID="ContentBox" runat="server" CssClass="textbox"></asp:TextBox>
+        <asp:TextBox ID="ContentBox" runat="server" CssClass="textbox" TextMode="MultiLine" Width="300px" Height="100px"></asp:TextBox>
         <br />
         <asp:Label ID="Label5" runat="server" Text="Permission Level: "></asp:Label>
         <asp:TextBox ID="PozwolenieBox" runat="server" CssClass="textbox"></asp:TextBox>
